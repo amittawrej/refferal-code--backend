@@ -18,10 +18,10 @@ export const connectDB = (uri) => {
     .then((c) => console.log(`DB connected to ${c.connection.host}`))
     .catch((e) => console.log(e));
 };
-connectDB("mongodb://localhost:27017/");
+connectDB(process.env.Mongo_URI);
 app.use(cors(
   {
-    origin: ["http://localhost:5173"],
+    origin: [process.env.Frontend_URI ,process.env.FIREBASE_URL],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   }
